@@ -19,13 +19,8 @@
 bl_info = {
     "name": "Parent to nearest bone",
     "author": "Pablo Gentile",
-<<<<<<< Updated upstream
-    "version": (0, 8, 0),
-    "blender": (3, 0, 0),
-=======
     "version": (1, 0, 0),
     "blender": (4, 2, 0),
->>>>>>> Stashed changes
     "location": "View3D > Object > Parent > Parent to nearest Bone",
     "description": "Parents object(s) to the nearest bone(s)",
     "warning": "",
@@ -53,22 +48,6 @@ def closestBone(ob, ar, use_center):
         print ('select an armature!')
         
     # to edit mode
-<<<<<<< Updated upstream
-    bpy.ops.object.mode_set(mode='EDIT')    
-    
-    # finds the minimum value from a list of tuples that store the distance and the bone itself
-    # and stores the resulting bone
-    if use_center:
-        # use the geometric center vs bone.center method
-        closest = min( [ (math.dist(getGeometryCenter(ob), loc2world(ar, bone.center)), bone) for bone in ar.data.edit_bones ])
-    else:
-        # use the object origin vs bone head method
-        closest = min( [ (math.dist(ob.location, loc2world(ar, bone.head)), bone) for bone in ar.data.edit_bones ])
-    
-    #extract bone name
-    bone_name = closest[1].name
-    
-=======
     bpy.ops.object.mode_set(mode='EDIT')
 
     # (original - fails with < operator raising TypeError on comparing EditBones, for some objects / bones in the model)
@@ -91,7 +70,6 @@ def closestBone(ob, ar, use_center):
     #extract bone name stored the resulting index
     bone_name = ar.data.edit_bones[closest_id].name
 
->>>>>>> Stashed changes
     # back to object mode
     bpy.ops.object.mode_set(mode='OBJECT')
     return bone_name
